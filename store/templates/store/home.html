@@ -1,0 +1,687 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Nova Threads — Style is not a luxury, it's a lifestyle</title>
+  <meta name="description" content="Nova Threads is a modern fashion store that blends elegance with comfort. Every piece is carefully selected to suit every occasion and every personality." />
+  <meta name="theme-color" content="#0d0d0f" />
+
+  <!-- Bootstrap 5 CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <!-- Bootstrap Icons -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" />
+  <!-- Google Fonts: Cormorant Garamond (display serif) + Jost (sans) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet" />
+
+  <style>
+    :root {
+      --bg:        #0d0d0f;
+      --bg-soft:   #16161a;
+      --bg-card:   #1b1b20;
+      --line:      #2a2a30;
+      --text:      #ece9e4;
+      --muted:     #9b968d;
+      --gold:      #c9a24b;
+      --gold-soft: #e3c987;
+    }
+
+    * { scroll-behavior: smooth; }
+
+    html, body {
+      background-color: var(--bg);
+      color: var(--text);
+      font-family: 'Jost', sans-serif;
+      font-weight: 300;
+      letter-spacing: 0.3px;
+      overflow-x: hidden;
+    }
+
+    h1, h2, h3, h4, .serif {
+      font-family: 'Cormorant Garamond', serif;
+      letter-spacing: 0.5px;
+    }
+
+    .eyebrow {
+      font-family: 'Jost', sans-serif;
+      text-transform: uppercase;
+      letter-spacing: 4px;
+      font-size: 0.72rem;
+      font-weight: 500;
+      color: var(--gold);
+    }
+
+    .text-gold { color: var(--gold); }
+    .text-muted-soft { color: var(--muted) !important; }
+    .bg-soft { background-color: var(--bg-soft); }
+
+    /* Navbar */
+    .navbar {
+      background-color: rgba(13,13,15,0.65);
+      backdrop-filter: blur(14px);
+      border-bottom: 1px solid transparent;
+      transition: all .4s ease;
+    }
+    .navbar.scrolled {
+      background-color: rgba(13,13,15,0.92);
+      border-bottom: 1px solid var(--line);
+    }
+    .navbar-brand {
+      font-family: 'Cormorant Garamond', serif;
+      font-weight: 600;
+      font-size: 1.6rem;
+      letter-spacing: 1px;
+    }
+    .navbar-brand .dot { color: var(--gold); }
+    .nav-link {
+      color: var(--text) !important;
+      font-size: 0.86rem;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      position: relative;
+      margin: 0 .35rem;
+    }
+    .nav-link::after {
+      content: '';
+      position: absolute;
+      left: 0; bottom: 2px;
+      width: 0; height: 1px;
+      background: var(--gold);
+      transition: width .35s ease;
+    }
+    .nav-link:hover::after { width: 100%; }
+    .navbar-toggler { border-color: var(--line); }
+
+    /* Buttons */
+    .btn-gold {
+      background: var(--gold);
+      color: #15130c;
+      border: 1px solid var(--gold);
+      border-radius: 0;
+      padding: .8rem 2.2rem;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      font-size: 0.78rem;
+      font-weight: 500;
+      transition: all .35s ease;
+    }
+    .btn-gold:hover {
+      background: transparent;
+      color: var(--gold);
+    }
+    .btn-outline-gold {
+      background: transparent;
+      color: var(--text);
+      border: 1px solid var(--line);
+      border-radius: 0;
+      padding: .8rem 2.2rem;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      font-size: 0.78rem;
+      font-weight: 500;
+      transition: all .35s ease;
+    }
+    .btn-outline-gold:hover {
+      border-color: var(--gold);
+      color: var(--gold);
+    }
+
+    /* Hero */
+    .hero {
+      position: relative;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      background:
+        linear-gradient(90deg, rgba(13,13,15,0.92) 0%, rgba(13,13,15,0.55) 55%, rgba(13,13,15,0.35) 100%),
+        url('https://images.unsplash.com/photo-1490481651871-ab68de25d43d?q=80&w=1600&auto=format&fit=crop') center/cover no-repeat;
+    }
+    .hero h1 {
+      font-size: clamp(3rem, 8vw, 6.5rem);
+      font-weight: 500;
+      line-height: 1.02;
+    }
+    .hero .lede {
+      color: var(--muted);
+      max-width: 480px;
+      font-size: 1.05rem;
+      line-height: 1.7;
+    }
+
+    /* Section spacing */
+    .section { padding: 6.5rem 0; }
+    .section-title {
+      font-size: clamp(2.2rem, 5vw, 3.4rem);
+      font-weight: 500;
+    }
+
+    /* Feature cards */
+    .feature {
+      border: 1px solid var(--line);
+      padding: 2.5rem 1.75rem;
+      height: 100%;
+      transition: all .4s ease;
+      background: var(--bg-soft);
+    }
+    .feature:hover {
+      border-color: var(--gold);
+      transform: translateY(-6px);
+    }
+    .feature i { font-size: 2rem; color: var(--gold); }
+
+    /* Product cards */
+    .product-card {
+      background: var(--bg-card);
+      border: 1px solid var(--line);
+      overflow: hidden;
+      height: 100%;
+      transition: all .4s ease;
+    }
+    .product-card:hover { border-color: var(--gold); }
+    .product-img {
+      position: relative;
+      overflow: hidden;
+      aspect-ratio: 3/4;
+    }
+    .product-img img {
+      width: 100%; height: 100%;
+      object-fit: cover;
+      transition: transform .7s ease;
+    }
+    .product-card:hover .product-img img { transform: scale(1.07); }
+    .product-tag {
+      position: absolute;
+      top: 1rem; left: 1rem;
+      background: var(--gold);
+      color: #15130c;
+      font-size: 0.65rem;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      padding: .3rem .7rem;
+      font-weight: 500;
+    }
+    .product-body { padding: 1.25rem 1.25rem 1.5rem; }
+    .product-cat {
+      font-size: 0.68rem;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+    .product-name { font-size: 1.4rem; font-weight: 500; }
+    .price { color: var(--gold); font-weight: 500; }
+    .add-cart {
+      background: transparent;
+      border: 1px solid var(--line);
+      color: var(--text);
+      width: 100%;
+      padding: .6rem;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      font-size: 0.72rem;
+      transition: all .3s ease;
+    }
+    .add-cart:hover { background: var(--gold); color: #15130c; border-color: var(--gold); }
+
+    /* Gallery */
+    .gallery-item {
+      overflow: hidden;
+      position: relative;
+      aspect-ratio: 1;
+    }
+    .gallery-item img {
+      width: 100%; height: 100%;
+      object-fit: cover;
+      transition: transform .8s ease, filter .8s ease;
+      filter: grayscale(30%);
+    }
+    .gallery-item:hover img { transform: scale(1.08); filter: grayscale(0%); }
+    .gallery-tall { aspect-ratio: 1/2; }
+
+    /* About */
+    .about-img {
+      width: 100%;
+      border: 1px solid var(--line);
+      filter: grayscale(15%);
+    }
+
+    /* Testimonials */
+    .testimonial {
+      border: 1px solid var(--line);
+      background: var(--bg-soft);
+      padding: 2.5rem;
+      height: 100%;
+    }
+    .testimonial .stars i { color: var(--gold); font-size: .85rem; }
+    .testimonial p { font-family: 'Cormorant Garamond', serif; font-size: 1.35rem; font-style: italic; line-height: 1.5; }
+    .avatar {
+      width: 46px; height: 46px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 1px solid var(--gold);
+    }
+
+    /* CTA */
+    .cta {
+      background:
+        linear-gradient(rgba(13,13,15,0.85), rgba(13,13,15,0.85)),
+        url('https://images.unsplash.com/photo-1483985988355-763728e1935b?q=80&w=1600&auto=format&fit=crop') center/cover fixed no-repeat;
+    }
+
+    /* Newsletter */
+    .news-input {
+      background: transparent;
+      border: 1px solid var(--line);
+      border-radius: 0;
+      color: var(--text);
+      padding: .85rem 1.2rem;
+    }
+    .news-input:focus {
+      background: transparent;
+      color: var(--text);
+      border-color: var(--gold);
+      box-shadow: none;
+    }
+    .news-input::placeholder { color: var(--muted); }
+
+    /* Footer */
+    footer { border-top: 1px solid var(--line); background: var(--bg-soft); }
+    .social-link {
+      width: 42px; height: 42px;
+      display: inline-flex; align-items: center; justify-content: center;
+      border: 1px solid var(--line);
+      color: var(--text);
+      transition: all .3s ease;
+    }
+    .social-link:hover { border-color: var(--gold); color: var(--gold); }
+    footer a { color: var(--muted); text-decoration: none; transition: color .3s ease; }
+    footer a:hover { color: var(--gold); }
+
+    /* Cart toast */
+    .cart-badge {
+      position: fixed;
+      bottom: 1.5rem; right: 1.5rem;
+      background: var(--gold);
+      color: #15130c;
+      padding: .9rem 1.4rem;
+      letter-spacing: 1px;
+      font-size: .85rem;
+      z-index: 1080;
+      transform: translateY(160%);
+      transition: transform .45s cubic-bezier(.2,.8,.2,1);
+      box-shadow: 0 10px 40px rgba(0,0,0,.5);
+    }
+    .cart-badge.show { transform: translateY(0); }
+
+    /* Reveal animation */
+    .reveal { opacity: 0; transform: translateY(34px); transition: opacity .9s ease, transform .9s ease; }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+
+    .divider-line { width: 60px; height: 1px; background: var(--gold); display: inline-block; }
+  </style>
+</head>
+<body>
+
+  <!-- NAVBAR -->
+  <nav class="navbar navbar-expand-lg fixed-top py-3" id="mainNav">
+    <div class="container">
+      <a class="navbar-brand" href="#home">Nova Threads<span class="dot">.</span></a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navMenu" aria-controls="navMenu" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse justify-content-end" id="navMenu">
+        <ul class="navbar-nav align-items-lg-center">
+          <li class="nav-item"><a class="nav-link" href="#collection">Collection</a></li>
+          <li class="nav-item"><a class="nav-link" href="#about">About</a></li>
+          <li class="nav-item"><a class="nav-link" href="#gallery">Gallery</a></li>
+          <li class="nav-item"><a class="nav-link" href="#reviews">Reviews</a></li>
+          <li class="nav-item ms-lg-3 mt-2 mt-lg-0">
+            <a class="btn btn-gold" href="#collection">Shop Now</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <header class="hero" id="home">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-7 reveal">
+          <span class="eyebrow d-block mb-4">Est. 2024 — Modern Fashion House</span>
+          <h1 class="mb-4">Style is not a luxury,<br><span class="text-gold fst-italic">it's a lifestyle.</span></h1>
+          <p class="lede mb-5">A modern fashion store that blends elegance with comfort. Every piece is carefully selected to suit every occasion and every personality.</p>
+          <div class="d-flex flex-wrap gap-3">
+            <a href="#collection" class="btn btn-gold">Explore Collection</a>
+            <a href="#about" class="btn btn-outline-gold">Our Story</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- FEATURES -->
+  <section class="section bg-soft">
+    <div class="container">
+      <div class="row g-4">
+        <div class="col-md-4 reveal">
+          <div class="feature text-center">
+            <i class="bi bi-gem mb-3 d-block"></i>
+            <h3 class="mb-2">Curated Quality</h3>
+            <p class="text-muted-soft mb-0">Every garment is hand-selected for premium fabric, fit, and timeless appeal.</p>
+          </div>
+        </div>
+        <div class="col-md-4 reveal">
+          <div class="feature text-center">
+            <i class="bi bi-truck mb-3 d-block"></i>
+            <h3 class="mb-2">Worldwide Delivery</h3>
+            <p class="text-muted-soft mb-0">Complimentary express shipping on all orders, delivered to your doorstep.</p>
+          </div>
+        </div>
+        <div class="col-md-4 reveal">
+          <div class="feature text-center">
+            <i class="bi bi-arrow-repeat mb-3 d-block"></i>
+            <h3 class="mb-2">Effortless Returns</h3>
+            <p class="text-muted-soft mb-0">Changed your mind? Enjoy 30-day hassle-free returns, no questions asked.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- COLLECTION / PRODUCTS -->
+  <section class="section" id="collection">
+    <div class="container">
+      <div class="text-center mb-5 reveal">
+        <span class="eyebrow d-block mb-3">The Edit</span>
+        <h2 class="section-title mb-3">Featured Collection</h2>
+        <span class="divider-line"></span>
+      </div>
+      <div class="row g-4" id="productGrid">
+        <!-- products injected via JS -->
+      </div>
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section class="section bg-soft" id="about">
+    <div class="container">
+      <div class="row align-items-center g-5">
+        <div class="col-lg-6 reveal">
+          <img class="about-img" src="https://images.unsplash.com/photo-1441986300917-64674bd600d8?q=80&w=1200&auto=format&fit=crop" alt="Interior of the Nova Threads boutique" />
+        </div>
+        <div class="col-lg-6 reveal">
+          <span class="eyebrow d-block mb-3">Our Story</span>
+          <h2 class="section-title mb-4">Where Elegance Meets Comfort</h2>
+          <p class="text-muted-soft mb-4">Nova Threads was born from a simple belief — that style should never compromise on comfort. We blend refined craftsmanship with everyday ease, creating pieces that move with you through every moment of life.</p>
+          <p class="text-muted-soft mb-4">From the boardroom to the weekend escape, our collections are designed to suit every occasion and celebrate every personality. We don't follow trends. We define a way of living.</p>
+          <div class="row g-4 mt-1">
+            <div class="col-4">
+              <h3 class="text-gold mb-0">12k+</h3>
+              <small class="text-muted-soft">Happy Clients</small>
+            </div>
+            <div class="col-4">
+              <h3 class="text-gold mb-0">350+</h3>
+              <small class="text-muted-soft">Unique Pieces</small>
+            </div>
+            <div class="col-4">
+              <h3 class="text-gold mb-0">40+</h3>
+              <small class="text-muted-soft">Countries</small>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- GALLERY -->
+  <section class="section" id="gallery">
+    <div class="container">
+      <div class="text-center mb-5 reveal">
+        <span class="eyebrow d-block mb-3">Lookbook</span>
+        <h2 class="section-title mb-3">Image Gallery</h2>
+        <span class="divider-line"></span>
+      </div>
+      <div class="row g-3">
+        <div class="col-6 col-lg-3 reveal">
+          <div class="gallery-item gallery-tall">
+            <img src="https://images.unsplash.com/photo-1483985988355-763728e1935b?q=80&w=900&auto=format&fit=crop" alt="Fashion model in elegant outerwear" />
+          </div>
+        </div>
+        <div class="col-6 col-lg-3 reveal">
+          <div class="gallery-item">
+            <img src="https://images.unsplash.com/photo-1539109136881-3be0616acf4b?q=80&w=900&auto=format&fit=crop" alt="Detail of a tailored garment" />
+          </div>
+          <div class="gallery-item mt-3">
+            <img src="https://images.unsplash.com/photo-1487412720507-e7ab37603c6f?q=80&w=900&auto=format&fit=crop" alt="Model wearing a minimalist outfit" />
+          </div>
+        </div>
+        <div class="col-6 col-lg-3 reveal">
+          <div class="gallery-item">
+            <img src="https://images.unsplash.com/photo-1485968579580-b6d095142e6e?q=80&w=900&auto=format&fit=crop" alt="Street style fashion look" />
+          </div>
+          <div class="gallery-item mt-3">
+            <img src="https://images.unsplash.com/photo-1496747611176-843222e1e57c?q=80&w=900&auto=format&fit=crop" alt="Woman in a contemporary outfit" />
+          </div>
+        </div>
+        <div class="col-6 col-lg-3 reveal">
+          <div class="gallery-item gallery-tall">
+            <img src="https://images.unsplash.com/photo-1529139574466-a303027c1d8b?q=80&w=900&auto=format&fit=crop" alt="Editorial fashion portrait" />
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TESTIMONIALS -->
+  <section class="section bg-soft" id="reviews">
+    <div class="container">
+      <div class="text-center mb-5 reveal">
+        <span class="eyebrow d-block mb-3">Kind Words</span>
+        <h2 class="section-title mb-3">What Our Clients Say</h2>
+        <span class="divider-line"></span>
+      </div>
+      <div class="row g-4">
+        <div class="col-md-4 reveal">
+          <div class="testimonial">
+            <div class="stars mb-3"><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i></div>
+            <p class="mb-4">"The quality is simply unmatched. Every piece feels like it was tailored just for me — elegant yet so comfortable."</p>
+            <div class="d-flex align-items-center gap-3">
+              <img class="avatar" src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?q=80&w=200&auto=format&fit=crop" alt="Portrait of Sofia Marchetti" />
+              <div>
+                <div class="serif fs-5">Sofia Marchetti</div>
+                <small class="text-muted-soft">Milan, Italy</small>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4 reveal">
+          <div class="testimonial">
+            <div class="stars mb-3"><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i></div>
+            <p class="mb-4">"Nova Threads changed my wardrobe entirely. Timeless, refined, and effortless — exactly the lifestyle I want."</p>
+            <div class="d-flex align-items-center gap-3">
+              <img class="avatar" src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?q=80&w=200&auto=format&fit=crop" alt="Portrait of James Whitfield" />
+              <div>
+                <div class="serif fs-5">James Whitfield</div>
+                <small class="text-muted-soft">London, UK</small>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4 reveal">
+          <div class="testimonial">
+            <div class="stars mb-3"><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i></div>
+            <p class="mb-4">"From the packaging to the fit, everything exudes luxury. This is now my go-to for every occasion."</p>
+            <div class="d-flex align-items-center gap-3">
+              <img class="avatar" src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?q=80&w=200&auto=format&fit=crop" alt="Portrait of Amara Okafor" />
+              <div>
+                <div class="serif fs-5">Amara Okafor</div>
+                <small class="text-muted-soft">New York, USA</small>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="section cta text-center">
+    <div class="container reveal">
+      <span class="eyebrow d-block mb-3">Limited Season Offer</span>
+      <h2 class="section-title mb-4">Elevate Your Wardrobe Today</h2>
+      <p class="text-muted-soft mb-5 mx-auto" style="max-width:560px;">Enjoy up to 30% off our new arrivals. Discover the pieces that turn everyday style into a statement.</p>
+      <a href="#collection" class="btn btn-gold">Shop The Collection</a>
+    </div>
+  </section>
+
+  <!-- NEWSLETTER -->
+  <section class="section">
+    <div class="container">
+      <div class="row justify-content-center text-center reveal">
+        <div class="col-lg-7">
+          <span class="eyebrow d-block mb-3">Stay In Touch</span>
+          <h2 class="section-title mb-3">Join The Nova Circle</h2>
+          <p class="text-muted-soft mb-4">Subscribe for early access to new collections, private sales, and styling inspiration delivered to your inbox.</p>
+          <form class="row g-2 justify-content-center" onsubmit="return subscribe(event)">
+            <div class="col-sm-7">
+              <input type="email" class="form-control news-input" placeholder="Enter your email address" required aria-label="Email address" />
+            </div>
+            <div class="col-sm-auto">
+              <button type="submit" class="btn btn-gold w-100">Subscribe</button>
+            </div>
+          </form>
+          <small class="text-muted-soft d-block mt-3" id="newsMsg"></small>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="pt-5 pb-4">
+    <div class="container">
+      <div class="row g-4 pb-4">
+        <div class="col-lg-4">
+          <a class="navbar-brand d-inline-block mb-3" href="#home">Nova Threads<span class="dot">.</span></a>
+          <p class="text-muted-soft" style="max-width:320px;">Style is not a luxury, it's a lifestyle. Curated fashion that blends elegance with comfort for every occasion.</p>
+          <div class="d-flex gap-2 mt-3">
+            <a href="#" class="social-link" aria-label="Instagram"><i class="bi bi-instagram"></i></a>
+            <a href="#" class="social-link" aria-label="Facebook"><i class="bi bi-facebook"></i></a>
+            <a href="#" class="social-link" aria-label="Twitter"><i class="bi bi-twitter-x"></i></a>
+            <a href="#" class="social-link" aria-label="Pinterest"><i class="bi bi-pinterest"></i></a>
+          </div>
+        </div>
+        <div class="col-6 col-lg-2">
+          <h4 class="fs-5 mb-3">Shop</h4>
+          <ul class="list-unstyled d-grid gap-2">
+            <li><a href="#collection">New Arrivals</a></li>
+            <li><a href="#collection">Women</a></li>
+            <li><a href="#collection">Men</a></li>
+            <li><a href="#collection">Accessories</a></li>
+          </ul>
+        </div>
+        <div class="col-6 col-lg-2">
+          <h4 class="fs-5 mb-3">Company</h4>
+          <ul class="list-unstyled d-grid gap-2">
+            <li><a href="#about">About Us</a></li>
+            <li><a href="#reviews">Reviews</a></li>
+            <li><a href="#gallery">Lookbook</a></li>
+            <li><a href="#">Careers</a></li>
+          </ul>
+        </div>
+        <div class="col-lg-4">
+          <h4 class="fs-5 mb-3">Get In Touch</h4>
+          <ul class="list-unstyled d-grid gap-2 text-muted-soft">
+            <li><i class="bi bi-geo-alt text-gold me-2"></i>24 Rue de la Mode, Paris, France</li>
+            <li><i class="bi bi-envelope text-gold me-2"></i>hello@novathreads.com</li>
+            <li><i class="bi bi-telephone text-gold me-2"></i>+33 1 42 68 53 00</li>
+          </ul>
+        </div>
+      </div>
+      <div class="d-flex flex-column flex-md-row justify-content-between align-items-center pt-4" style="border-top:1px solid var(--line);">
+        <small class="text-muted-soft">© 2024 Nova Threads. All rights reserved.</small>
+        <small class="text-muted-soft mt-2 mt-md-0">Privacy Policy · Terms of Service</small>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Add to cart toast -->
+  <div class="cart-badge" id="cartBadge"><i class="bi bi-bag-check me-2"></i><span id="cartText">Added to cart</span></div>
+
+  <!-- Bootstrap JS -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script>
+    // ---- Products ----
+    const products = [
+      { name: 'Aurelia Wool Coat',   cat: 'Outerwear', price: 289, tag: 'New', img: 'https://images.unsplash.com/photo-1539533018447-63fcce2678e3?q=80&w=800&auto=format&fit=crop' },
+      { name: 'Silk Slip Dress',     cat: 'Dresses',   price: 165, tag: '',    img: 'https://images.unsplash.com/photo-1595777457583-95e059d581b8?q=80&w=800&auto=format&fit=crop' },
+      { name: 'Tailored Blazer',     cat: 'Suiting',   price: 210, tag: 'Best Seller', img: 'https://images.unsplash.com/photo-1591047139829-d91aecb6caea?q=80&w=800&auto=format&fit=crop' },
+      { name: 'Cashmere Knit',       cat: 'Knitwear',  price: 138, tag: '',    img: 'https://images.unsplash.com/photo-1576566588028-4147f3842f27?q=80&w=800&auto=format&fit=crop' },
+      { name: 'Pleated Midi Skirt',  cat: 'Bottoms',   price: 124, tag: 'New', img: 'https://images.unsplash.com/photo-1583496661160-fb5886a0aaaa?q=80&w=800&auto=format&fit=crop' },
+      { name: 'Linen Shirt',         cat: 'Essentials',price: 89,  tag: '',    img: 'https://images.unsplash.com/photo-1602810318383-e386cc2a3ccf?q=80&w=800&auto=format&fit=crop' },
+      { name: 'Leather Tote',        cat: 'Accessories',price: 245, tag: '',   img: 'https://images.unsplash.com/photo-1584917865442-de89df76afd3?q=80&w=800&auto=format&fit=crop' },
+      { name: 'Wide Leg Trousers',   cat: 'Bottoms',   price: 142, tag: 'Best Seller', img: 'https://images.unsplash.com/photo-1594633312681-425c7b97ccd1?q=80&w=800&auto=format&fit=crop' },
+    ];
+
+    let cartCount = 0;
+
+    const grid = document.getElementById('productGrid');
+    grid.innerHTML = products.map(p => `
+      <div class="col-6 col-lg-3 reveal">
+        <div class="product-card">
+          <div class="product-img">
+            ${p.tag ? `<span class="product-tag">${p.tag}</span>` : ''}
+            <img src="${p.img}" alt="${p.name}" loading="lazy" />
+          </div>
+          <div class="product-body">
+            <span class="product-cat d-block mb-1">${p.cat}</span>
+            <h3 class="product-name mb-2">${p.name}</h3>
+            <div class="d-flex justify-content-between align-items-center mb-3">
+              <span class="price fs-5">$${p.price}</span>
+              <span class="stars" style="color:var(--gold);font-size:.8rem;">
+                <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-half"></i>
+              </span>
+            </div>
+            <button class="add-cart" onclick="addToCart('${p.name.replace(/'/g, "")}')">
+              <i class="bi bi-bag-plus me-2"></i>Add to Cart
+            </button>
+          </div>
+        </div>
+      </div>
+    `).join('');
+
+    // ---- Add to cart ----
+    const badge = document.getElementById('cartBadge');
+    const cartText = document.getElementById('cartText');
+    let hideTimer;
+    function addToCart(name) {
+      cartCount++;
+      cartText.textContent = `${name} added · ${cartCount} item${cartCount > 1 ? 's' : ''} in bag`;
+      badge.classList.add('show');
+      clearTimeout(hideTimer);
+      hideTimer = setTimeout(() => badge.classList.remove('show'), 2600);
+    }
+
+    // ---- Newsletter ----
+    function subscribe(e) {
+      e.preventDefault();
+      document.getElementById('newsMsg').textContent = 'Thank you for joining the Nova Circle. Check your inbox!';
+      e.target.reset();
+      return false;
+    }
+
+    // ---- Navbar scroll state ----
+    const nav = document.getElementById('mainNav');
+    window.addEventListener('scroll', () => {
+      nav.classList.toggle('scrolled', window.scrollY > 40);
+    });
+
+    // ---- Reveal on scroll ----
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(en => { if (en.isIntersecting) { en.target.classList.add('visible'); observer.unobserve(en.target); } });
+    }, { threshold: 0.12 });
+    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+  </script>
+</body>
+</html>
